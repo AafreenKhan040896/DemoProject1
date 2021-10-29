@@ -1,7 +1,7 @@
 // ignore_for_file: must_call_super, avoid_print, avoid_unnecessary_containers
-
-import 'package:desktop_layout_view2/routes/routes.dart';
 import 'package:desktop_layout_view2/widgets/candidate_form.dart';
+import 'package:desktop_layout_view2/widgets/logout.dart';
+import 'package:desktop_layout_view2/widgets/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:desktop_layout_view2/widgets/company_profile.dart';
 import 'package:desktop_layout_view2/widgets/job_description.dart';
@@ -26,15 +26,27 @@ class SideDrawer extends StatelessWidget{
           ),
           ListTile(
             title: const Text('Home'),
-            onTap: () => Navigator.pushReplacementNamed(context, Routes.home)
+             onTap: () {
+              Navigator.pop(context);
+              Navigator.push<void>(context,
+                  MaterialPageRoute(builder: (context) => const TabbedView()));
+            },
           ),
           ListTile(
             title: const Text('Settings'),
-            onTap: () => Navigator.pushReplacementNamed(context, Routes.settings)
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push<void>(context,
+                  MaterialPageRoute(builder: (context) => const Settings()));
+            },
           ),
           ListTile(
             title: const Text('LogOut'),
-            onTap: () => Navigator.pushReplacementNamed(context, Routes.logout)
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push<void>(context,
+                  MaterialPageRoute(builder: (context) => const LogOut()));
+            },
           ),
         ],
       ),
@@ -43,13 +55,13 @@ class SideDrawer extends StatelessWidget{
   
 }
 
-class MobilePage extends StatefulWidget {
-  const MobilePage({ Key? key }) : super(key: key);
+class TabbedView extends StatefulWidget {
+  const TabbedView({ Key? key }) : super(key: key);
   @override
-  State<MobilePage> createState() => _MobilePageState();
+  State<TabbedView> createState() => _TabbedViewState();
 }
 
-class _MobilePageState extends State<MobilePage> with AutomaticKeepAliveClientMixin<MobilePage>, SingleTickerProviderStateMixin {
+class _TabbedViewState extends State<TabbedView> with AutomaticKeepAliveClientMixin<TabbedView>, SingleTickerProviderStateMixin {
   
   @override
   bool get wantKeepAlive => true;
@@ -97,4 +109,27 @@ class _MobilePageState extends State<MobilePage> with AutomaticKeepAliveClientMi
       ),
     );
   }
+}
+
+class MobilePage extends StatefulWidget{
+  const MobilePage({Key? key}) : super(key: key);
+
+  @override
+  State<MobilePage> createState() => _MobilePageState();
+  
+}
+
+class _MobilePageState extends State <MobilePage>{
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  
+  @override
+  Widget build(BuildContext context) {
+    return const TabbedView();
+  }
+  
 }
