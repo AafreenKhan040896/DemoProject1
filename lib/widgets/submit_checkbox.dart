@@ -8,8 +8,22 @@ class SubmitCheckBox extends StatefulWidget {
 }
 
 class _SubmitCheckBoxState extends State<SubmitCheckBox> {
+  bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
+
     return Expanded(
       child: Container(
         //width: (MediaQuery.of(context).size.width / 2),
@@ -17,12 +31,28 @@ class _SubmitCheckBoxState extends State<SubmitCheckBox> {
         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
         margin: const EdgeInsets.all(9.0),
         padding: const EdgeInsets.symmetric(),
-        child: const Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              'Submit Box',
-              style: TextStyle(fontSize: 10),
-            )),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Checkbox(
+                    checkColor: Colors.white,
+                    fillColor: MaterialStateProperty.resolveWith(getColor),
+                    value: isChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked = value!;
+                      });
+                    }),
+                const Text(
+                    'I certify that all the information above has been validated by me and is certified to be true'),
+                const SizedBox(width: 10),
+                ElevatedButton(onPressed: () {}, child: const Text('Save')),
+                ElevatedButton(onPressed: () {}, child: const Text('Approve and Submit')),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

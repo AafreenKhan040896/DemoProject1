@@ -24,14 +24,16 @@ class _SkillsTableState extends State<SkillsTable>
           SizedBox(
             height: 40,
             child: Container(
-              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
               //width: (MediaQuery.of(context).size.width / 2),
               child: Table(
                   columnWidths: const {
                     0: FlexColumnWidth(5),
                     1: FlexColumnWidth(3),
                     2: FlexColumnWidth(3),
-                    3: FlexColumnWidth(6),
+                    3: FlexColumnWidth(3),
+                    4: FlexColumnWidth(6),
                   },
                   border: TableBorder.symmetric(
                       inside: const BorderSide(width: 2, color: Colors.black)),
@@ -42,10 +44,10 @@ class _SkillsTableState extends State<SkillsTable>
             child: SizedBox(
               height: ((MediaQuery.of(context).size.height / 2) - 33),
               child: Container(
-                height: ((MediaQuery.of(context).size.height / 2) - 33),
+                  height: ((MediaQuery.of(context).size.height / 2) - 33),
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.black)),
-                  
+
                   //width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
@@ -54,10 +56,12 @@ class _SkillsTableState extends State<SkillsTable>
                         0: FlexColumnWidth(5),
                         1: FlexColumnWidth(3),
                         2: FlexColumnWidth(3),
-                        3: FlexColumnWidth(6),
+                        3: FlexColumnWidth(3),
+                        4: FlexColumnWidth(6),
                       },
                       border: TableBorder.symmetric(
-                          inside: const BorderSide(width: 2, color: Colors.black),
+                          inside:
+                              const BorderSide(width: 2, color: Colors.black),
                           outside:
                               const BorderSide(width: 2, color: Colors.black)),
                       children: returnRows(5),
@@ -88,13 +92,13 @@ class _SkillsTableState extends State<SkillsTable>
         textAlign: TextAlign.center,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
       )),
-      /*TableCell(
+      TableCell(
           child: Text(
         'Right\nScore',
         textAlign: TextAlign.center,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
       )),
-      TableCell(
+      /*TableCell(
           child: Text(
         'Practice\nTest',
         textAlign: TextAlign.center,
@@ -127,7 +131,7 @@ class _SkillsTableState extends State<SkillsTable>
         const TableCell(
             verticalAlignment: TableCellVerticalAlignment.middle,
             child: EditableField()),
-        /*TableCell(
+        TableCell(
             verticalAlignment: TableCellVerticalAlignment.middle,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +139,7 @@ class _SkillsTableState extends State<SkillsTable>
                 children: const [
                   Text('Coming Soon', textAlign: TextAlign.center)
                 ])),
-        const TableCell(
+        /*const TableCell(
             verticalAlignment: TableCellVerticalAlignment.middle,
             child: Text('www.google.com', textAlign: TextAlign.center)),*/
         const TableCell(
